@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class ListaAbastecimentos extends StatelessWidget {
-  const ListaAbastecimentos({Key? key}) : super(key: key);
+  const ListaAbastecimentos({super.key});
 
   @override
   Widget build(BuildContext context) {
