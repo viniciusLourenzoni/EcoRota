@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import '../models/abastecimento_model.dart';
+import '../services/abastecimento_service.dart';
+
 class FormularioAbastecimento extends StatefulWidget {
-  const FormularioAbastecimento({Key? key}) : super(key: key);
+  const FormularioAbastecimento({super.key});
 
   @override
   State<FormularioAbastecimento> createState() => _FormularioAbastecimentoState();
@@ -92,11 +95,18 @@ class _FormularioAbastecimentoState extends State<FormularioAbastecimento> {
             ),
             const SizedBox(height: 24),
             ElevatedButton(
-              onPressed: () {
-                if (_chaveFormulario.currentState!.validate()) {
-                  // TODO: Salvar registro de abastecimento
-                  Navigator.pop(context);
-                }
+              onPressed: () async {
+                if (!_chaveFormulario.currentState!.validate()) return;
+                  final novo = AbastecimentoModel(
+                    data: _dataController.text,
+                    litros: double.parse(_litrosController.text),
+                    preco: double.parse(_precoController.text),
+                    odometro: int.parse(_odometroController.text),
+                    posto: 'Posto Manual',
+                  );
+                  await AbastecimentoService().inserir(novo);
+                  if (!context.mounted) return;
+                  Navigator.of(context).pop();
               },
               child: const Text('Salvar Abastecimento'),
             ),
