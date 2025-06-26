@@ -41,10 +41,11 @@ class _PostosState extends State<Postos> {
     if (_posicaoAtual == null) {
       return const Center(child: CircularProgressIndicator());
     }
+
     return Column(
       children: [
         Expanded(flex: 2, child: MapaLocalizacao(posicao: _posicaoAtual!)),
-       // Expanded(flex: 1, child: PostosProximos(posicao: _posicaoAtual!)),
+        Expanded(flex: 3, child: PostosProximos(posicao: _posicaoAtual!)),
       ],
     );
   }
