@@ -1,7 +1,6 @@
 import 'package:eco_rota/componentes/cartao_estatisticas.dart';
 import 'package:eco_rota/componentes/formulario_abastecimento.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -11,31 +10,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Position? _currentPosition;
 
   @override
   void initState() {
     super.initState();
-    _getCurrentLocation();
-  }
-
-  Future<void> _getCurrentLocation() async {
-    try {
-      LocationPermission permission = await Geolocator.checkPermission();
-      if (permission == LocationPermission.denied) {
-        permission = await Geolocator.requestPermission();
-      }
-
-      if (permission == LocationPermission.whileInUse ||
-          permission == LocationPermission.always) {
-        Position position = await Geolocator.getCurrentPosition();
-        setState(() {
-          _currentPosition = position;
-        });
-      }
-    } catch (e) {
-      debugPrint('Erro ao obter localização: $e');
-    }
   }
 
   @override
