@@ -55,7 +55,7 @@ class _PostosProximosState extends State<PostosProximos> {
         postos.sort((a, b) => a['distancia'].compareTo(b['distancia']));
 
         setState(() {
-          _postos = postos.take(10).toList(); // limita aos 10 mais próximos
+          _postos = postos.take(10).toList();
           _carregando = false;
         });
       } else {

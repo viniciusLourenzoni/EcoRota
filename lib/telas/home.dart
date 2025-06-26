@@ -1,6 +1,5 @@
 import 'package:eco_rota/componentes/cartao_estatisticas.dart';
 import 'package:eco_rota/componentes/formulario_abastecimento.dart';
-import 'package:eco_rota/componentes/mapa_localizacao.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -57,8 +56,6 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 20),
               const FormularioAbastecimento(),
               const SizedBox(height: 20),
-              if (_currentPosition != null)
-                MapaLocalizacao(posicao: _currentPosition!),
             ],
           ),
         ),
